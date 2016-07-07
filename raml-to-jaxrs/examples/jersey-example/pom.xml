@@ -4,12 +4,12 @@
 
 	<parent>
 		<groupId>org.raml</groupId>
-		<artifactId>raml-jaxrs-codegen-parent</artifactId>
-<version>1.3.5-SNAPSHOT</version>
+		<artifactId>raml-jaxrs-codegen-parent-clubos</artifactId>
+<version>1.3.5</version>
 		<relativePath>../../</relativePath>
 	</parent>
 
-	<artifactId>raml-jaxrs-jersey-example</artifactId>
+	<artifactId>raml-jaxrs-jersey-example-clubos</artifactId>
 	<packaging>jar</packaging>
 	<name>RAML JAX-RS Jersey Example</name>
 
@@ -67,7 +67,7 @@
 			
 			<plugin>
 				<groupId>org.raml.plugins</groupId>
-				<artifactId>raml-jaxrs-maven-plugin</artifactId>
+				<artifactId>raml-jaxrs-maven-plugin-clubos</artifactId>
 				<version>${project.version}</version>
 				<configuration>
 					<sourceDirectory>${basedir}/src/main/resources/raml</sourceDirectory>

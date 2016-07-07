@@ -11,114 +11,29 @@
     <module>com.mulesoft.jaxrs.raml.generator.annotations</module>
     <module>jaxrs-raml-maven-plugin</module>
   </modules>
- <distributionManagement>
-       <repository>
-            <id>mule-ee-releases</id>
-            <name>Mule Release Repository</name>                                               
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>mule-snapshots</id>
-            <name>Mule Snapshot Repository</name>
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/snapshots/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-  </distributionManagement>
-<profiles>
-    <profile>
-        <id>sonatype</id>
-        <distributionManagement>
-  <snapshotRepository>
-    <id>ossrh</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-  </snapshotRepository>
-  <repository>
-    <id>ossrh</id>
-    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-  </repository>
-        </distributionManagement>
-      <build>
-        <plugins>
-<!--           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.5</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
- -->        </plugins>
-      </build>
-    </profile>
-</profiles>
+  <distributionManagement>
+      <repository>
+        <id>aws-release</id>
+        <name>S3 Release Repository</name>
+        <url>s3://clubos-deploy/repo/release</url>
+      </repository>
+      <snapshotRepository>
+        <id>aws-snapshot</id>
+        <name>S3 Snapshot Repository</name>
+        <url>s3://clubos-deploy/repo/snapshot</url>
+      </snapshotRepository>
+    </distributionManagement>
   <build>
+    <extensions>
+          <extension>
+            <groupId>org.springframework.build</groupId>
+            <artifactId>aws-maven</artifactId>
+            <version>5.0.0.RELEASE</version>
+          </extension>
+        </extensions>
     <plugins>
-    <!-- 
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <extensions>true</extensions>
-      </plugin>
-      
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <environments>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
-              <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>macosx</os>
-              <ws>cocoa</ws>
-              <arch>x86_64</arch>
-            </environment>
-          </environments>
-        </configuration>
-      </plugin>
-      -->
     </plugins>
   </build>
-  <!-- 
-  <properties>
-    <tycho.version>0.21.0</tycho.version>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>
-  </properties>
-  
-  <repositories>
-    <repository>
-      <id>kepler</id>
-      <url>${kepler-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
-  </repositories>
-  -->
   <name>JAXRS to RAML transformers</name>
   <description>JAXRS to RAML transformers</description>
     <scm>

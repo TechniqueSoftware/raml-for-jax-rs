@@ -9,55 +9,20 @@
     <modules>
         <module>core</module>
         <module>maven-plugin</module>
-        <module>gradle-plugin</module>
     </modules>
     <properties>       
         <licensePath>LICENSE_HEADER.txt</licensePath>
     </properties>
 
     <build>
+      <extensions>
+           <extension>
+             <groupId>org.springframework.build</groupId>
+             <artifactId>aws-maven</artifactId>
+             <version>5.0.0.RELEASE</version>
+           </extension>
+         </extensions>
         <plugins>
-<!--       
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <version>1.9.0</version>
-                <configuration>
-                    <header>${licensePath}</header>
-                    <skip>false</skip>
-                    <excludes>
-                        <exclude>target/**</exclude>
-                        <exclude>**/.gitignore</exclude>
-                        <exclude>.idea/**</exclude>
-                        <exclude>**/*.yaml</exclude>
-                        <exclude>**/*.raml</exclude>
-                        <exclude>**/*.txt</exclude>
-                        <exclude>**/*.json</exclude>
-                        <exclude>**/*.xml</exclude>
-                        <exclude>**/*.xsd</exclude>
-                        <exclude>**/*.properties</exclude>
-                        <exclude>**/*.md</exclude>
-                        <exclude>**/*.template</exclude>
-                        <exclude>**/*.buildpath</exclude>
-                        <exclude>**/example-output/**</exclude>
-                    </excludes>
-                    <mapping>
-                        <java>SLASHSTAR_STYLE</java>
-                    </mapping>
-                    <strictCheck>true</strictCheck>
-                    <properties>
-                        <licenseYear>2013-2015</licenseYear>
-                    </properties>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            -->
         </plugins>
         <pluginManagement>
             <plugins>
@@ -74,28 +39,18 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>https://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+          <id>aws-release</id>
+          <name>S3 Release Repository</name>
+          <url>s3://clubos-deploy/repo/release</url>
         </repository>
-        <repository>
-            <id>mulesoft-snapshots</id>
-            <name>MuleSoft Snapshots Repository</name>
-            <url>https://repository.mulesoft.org/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+        <snapshotRepository>
+          <id>aws-snapshot</id>
+          <name>S3 Snapshot Repository</name>
+          <url>s3://clubos-deploy/repo/snapshot</url>
+        </snapshotRepository>
+      </distributionManagement>
     <description>RAML JAXRS</description>
     <scm>
 		<url>https://github.com/mulesoft/raml-for-jax-rs.git</url>

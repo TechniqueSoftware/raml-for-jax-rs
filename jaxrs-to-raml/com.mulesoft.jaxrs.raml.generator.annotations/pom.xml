@@ -60,20 +60,26 @@
         </executions>
       </plugin>
     </plugins>
+    <extensions>
+          <extension>
+            <groupId>org.springframework.build</groupId>
+            <artifactId>aws-maven</artifactId>
+            <version>5.0.0.RELEASE</version>
+          </extension>
+        </extensions>
   </build>
- <distributionManagement>
-       <repository>
-            <id>mule-ee-releases</id>
-            <name>Mule Release Repository</name>                                               
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>mule-snapshots</id>
-            <name>Mule Snapshot Repository</name>
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/snapshots/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-  </distributionManagement>
+  <distributionManagement>
+      <repository>
+        <id>aws-release</id>
+        <name>S3 Release Repository</name>
+        <url>s3://clubos-deploy/repo/release</url>
+      </repository>
+      <snapshotRepository>
+        <id>aws-snapshot</id>
+        <name>S3 Snapshot Repository</name>
+        <url>s3://clubos-deploy/repo/snapshot</url>
+      </snapshotRepository>
+    </distributionManagement>
 <profiles>
     <profile>
         <id>sonatype</id>

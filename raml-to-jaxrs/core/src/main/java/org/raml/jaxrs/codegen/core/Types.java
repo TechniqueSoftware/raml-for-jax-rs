@@ -35,7 +35,6 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +44,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.StreamingOutput;
 
 import org.apache.commons.lang.Validate;
+import org.joda.time.DateTime;
 import org.raml.model.Action;
 import org.raml.model.MimeType;
 import org.raml.model.Resource;
@@ -295,7 +295,7 @@ public class Types
             case BOOLEAN :
                 return usePrimitive ? boolean.class : Boolean.class;
             case DATE :
-                return Date.class;
+                return DateTime.class;
             case FILE :
                 return File.class;
             case INTEGER :
